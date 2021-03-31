@@ -1,15 +1,12 @@
 FROM node:14.16.0
 LABEL maintainer="francisco.alvarez@ulfix.com"
-RUN mkdir -p /app/node_modules && chown -R node:node /app
-RUN mkdir -p /app/src && chown -R node:node /app
+RUN mkdir -p /app/node_modules
+RUN mkdir -p /app/src
+RUN mkdir -p /app/public && chown -R node:node /app
 WORKDIR /app
 COPY package*.json ./
-COPY gatsby-*.js ./
-#COPY gatsby-browser.js .
-#COPY gatsby-config.js .
-#COPY gatsby-node.js .
-#COPY gatsby-ssr.js .
+ADD public /app/public
+RUN npm install react-scripts@3.4.0 -g --silent
 RUN npm install
 EXPOSE 8000
-EXPOSE 44397
-CMD npm run develop
+CMD npm run start

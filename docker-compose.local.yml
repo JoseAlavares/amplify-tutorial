@@ -1,17 +1,14 @@
 version: '3.8'
 services:
   front:
-    image: ulfix/ulfix-web-2.0:local
-    container_name: ulfix-web-2.0
+    image: jalvarez/amplify-tutorial:local
+    container_name: amplify-tutorial
     build: 
       context: ./
       dockerfile: ./Dockerfile.local
     environment:
-      CHOKIDAR_USEPOLLING: "true"
-      CONTENTFUL_SPACE_ID: "aamv8ol4pbuk"
-      CONTENTFUL_ACCESS_TOKEN: "fqgZuRV5DQltNtEiHN_k0vVnM7bvuDo5NUWYJZkGx9A"
+      CHOKIDAR_USEPOLLING: "true"      
     ports:
-      - 8002:8000
-      - 44397:44397
+      - 8003:3000
     volumes: 
       - ./src/:/app/src
